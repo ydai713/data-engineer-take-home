@@ -8,8 +8,8 @@ defs = Definitions(
     jobs=[create_manifest_job],
     resources={
         "dbt": DbtCliResource(
-            project_dir="dbt",
-            profiles_dir="dbt",
+            project_dir="/opt/dagster/app/abs_dbt",
+            profiles_dir="/root/.dbt",
         ),
     },
 )

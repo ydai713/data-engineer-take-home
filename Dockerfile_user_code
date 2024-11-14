@@ -25,12 +25,12 @@ COPY . /opt/dagster/app
 
 RUN mkdir -p /root/.dbt
 
-COPY dbt/profiles.yml /root/.dbt/profiles.yml
+COPY abs_dbt/profiles.yml /root/.dbt/profiles.yml
 
-WORKDIR /opt/dagster/app/dbt
+WORKDIR /opt/dagster/app/abs_dbt
 
 RUN dbt deps
-RUN dbt compile
+# RUN dbt compile
 
 WORKDIR /opt/dagster/app
 
