@@ -1,0 +1,12 @@
+abs_dbt:
+  outputs:
+    dev:
+      dbname: "{{ env_var('POSTGRES_DB_NAME') }}"
+      host: "{{ env_var('POSTGRES_DB_HOST') }}"
+      user: "{{ env_var('POSTGRES_DB_USER') }}"
+      password: "{{ env_var('POSTGRES_DB_PASSWORD') }}"
+      port: "{{ env_var('POSTGRES_DB_PORT', 5432) | int }}"
+      schema: "{{ env_var('POSTGRES_DB_SCHEMA', 'dagster') }}"
+      threads: 4
+      type: postgres
+  target: dev

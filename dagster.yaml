@@ -1,0 +1,27 @@
+scheduler:
+  module: dagster.core.scheduler
+  class: DagsterDaemonScheduler
+
+run_coordinator:
+  module: dagster.core.run_coordinator
+  class: QueuedRunCoordinator
+
+run_launcher:
+  module: dagster._core.launcher.default_run_launcher
+  class: DefaultRunLauncher
+
+storage:
+  postgres:
+    postgres_db:
+      hostname:
+        env: POSTGRES_DB_HOST
+      username:
+        env: POSTGRES_DB_USER
+      password:
+        env: POSTGRES_DB_PASSWORD
+      db_name:
+        env: POSTGRES_DB_NAME
+      port:
+        env: POSTGRES_DB_PORT
+      # params:
+      #   options: -c search_path=dagster

@@ -1,0 +1,44 @@
+FROM python:3.10-slim
+
+RUN pip install --upgrade pip setuptools wheel
+
+# Checkout and install dagster libraries needed to run the gRPC server
+# exposing your repository to dagster-webserver and dagster-daemon, and to load the DagsterInstance
+RUN pip install \
+    dagster==1.7.3 \
+    dagster-postgres \
+    dagster-docker \
+    dagster-dbt \
+    dagster_slack \
+    dagster-embedded-elt \
+    aiohttp==3.8.5 \
+    dbt-core \
+    dbt-postgres \
+    psycopg2-binary \
+    requests==2.31.0
+
+# Add repository code
+
+WORKDIR /opt/dagster/app
+
+COPY . /opt/dagster/app
+
+RUN mkdir -p /root/.dbt
+
+COPY dbt/profiles.yml /root/.dbt/profiles.yml
+
+WORKDIR /opt/dagster/app/dbt
+
+RUN dbt deps
+RUN dbt compile
+
+WORKDIR /opt/dagster/app
+
+# Run dagster gRPC server on port 4000
+
+EXPOSE 4000
+
+# CMD allows this to be overridden from run launchers or executors that want
+# to run other commands against your repository
+# https://docs.dagster.io/concepts/code-locations/workspace-files
+CMD ["dagster", "api", "grpc", "--module-name", "dagster_user_code", "-h", "0.0.0.0", "-p", "4000"]
