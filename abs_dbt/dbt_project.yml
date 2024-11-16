@@ -28,3 +28,12 @@ clean-targets:
 # In this example config, we tell dbt to build all models in the example/
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
+
+seeds:
+  abs_dbt:
+    wallet_networth:
+      +column_types:
+        native_balance: numeric
+        native_balance_usd: numeric
+        total_networth_usd: numeric
+        token_balance_usd: numeric
