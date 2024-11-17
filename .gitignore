@@ -1,2 +1,6 @@
 .env
 .DS_Store
+
+
+abs_dbt/target/
+abs_dbt/logs/
