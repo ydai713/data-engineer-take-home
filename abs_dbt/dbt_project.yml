@@ -37,3 +37,17 @@ seeds:
         native_balance_usd: numeric
         total_networth_usd: numeric
         token_balance_usd: numeric
+
+models:
+  abs_dbt:
+    staging:
+      materialized: view
+    intermediate:
+      materialized: view
+    mart:
+      materialized: table
+
+vars:
+  whale_threshold: 0.01
+  nft_min_count_threshold: 2
+  net_worth_threshold: 5000

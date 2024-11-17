@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    description: "Stage table for transaction data"
+    columns:
+      - name: transaction_hash
+        tests:
+          - unique
+          - not_null

@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_logs
+    description: "Stage table for logs data"
+    columns:
+      - name: to_address
+        tests:
+          - not_null
+      - name: token_id
+        tests:
+          - not_null
