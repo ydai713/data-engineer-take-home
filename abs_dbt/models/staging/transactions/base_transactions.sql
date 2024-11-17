@@ -6,4 +6,4 @@ SELECT
     "to",
     transaction_hash,
     value
-FROM {{ source('public', 'transactions') }}
+FROM {{ source('dagster', 'transactions') }}

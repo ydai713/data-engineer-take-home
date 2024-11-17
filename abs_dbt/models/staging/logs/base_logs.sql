@@ -7,4 +7,4 @@ SELECT
     decoded,
     method,
     address
-FROM {{ source('public', 'logs') }}
+FROM {{ source('dagster', 'logs') }}

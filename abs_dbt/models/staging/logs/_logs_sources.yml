@@ -1,6 +1,6 @@
 version: 2
 
 sources:
-  - name: public
+  - name: dagster
     tables:
       - name: logs
