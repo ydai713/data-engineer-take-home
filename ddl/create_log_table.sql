@@ -1,5 +1,3 @@
-SET search_path TO dagster, public;
-
 CREATE TABLE logs
 (
     chain_id         integer NOT NULL,

@@ -1,5 +1,3 @@
-SET search_path TO dagster, public;
-
 CREATE TABLE transactions
 (
     chain_id         integer NOT NULL,
